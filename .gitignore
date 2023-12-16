@@ -9,6 +9,12 @@
 # testing
 /coverage
 
+#JetBrains
+*.iml
+.idea/
+*.iws
+*.ipr
+
 # next.js
 /.next/
 /out/
