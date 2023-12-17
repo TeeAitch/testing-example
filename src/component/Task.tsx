@@ -8,25 +8,31 @@ type TaskProps = {
 }
 export default function Task({ title, content}:TaskProps){
     const [isChecked, setIstChecked] = useState(false);
+    const taskStyle = isChecked ? styles.titleCompleted : styles.title
+    const contentStyle = isChecked ? styles.contentCompleted : ''
 
     const handleCheckboxCheck = () =>{
         setIstChecked(!isChecked)
     }
     return(
-           <li className={styles.Task}>
-               <label
-                   htmlFor='checkbox'
-                   className={styles.title}
-                   onClick={handleCheckboxCheck}
-               >{title}
-               </label>
-               <input
-                   type='checkbox'
-                   className={styles.checkbox}
-                   id='checkbox'
-                   checked={isChecked}
-               />
-               <p>{content}</p>
-           </li>
+        <main className={styles.mainTask} onClick={handleCheckboxCheck}>
+            <li className={styles.Task}>
+                <label
+                    htmlFor='checkbox'
+                    className={taskStyle}
+                    onClick={handleCheckboxCheck}
+                >{title}
+                </label>
+                <input
+                    type='checkbox'
+                    className={styles.checkbox}
+                    id='checkbox'
+                    checked={isChecked}
+                    readOnly={true}
+                />
+                <p className={contentStyle}>{content}</p>
+            </li>
+        </main>
+
     )
 }
